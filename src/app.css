@@ -72,8 +72,9 @@
     transform: scale(1.05);
   }
   
-  .cta-button-primary:focus {
-    outline: none;
+  .cta-button-primary:focus-visible {
+    outline: 3px solid rgba(137, 207, 228, 0.95);
+    outline-offset: 4px;
   }
 
   .cta-button-secondary {
@@ -94,8 +95,9 @@
     transform: scale(1.05);
   }
   
-  .cta-button-secondary:focus {
-    outline: none;
+  .cta-button-secondary:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.9);
+    outline-offset: 4px;
   }
   
 

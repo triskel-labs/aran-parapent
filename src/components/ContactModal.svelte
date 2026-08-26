@@ -1,35 +1,54 @@
 <script lang="ts">
+	let { showModal = $bindable(false), title = 'Contactar' } = $props();
+	const phoneNumber = '+34649964007';
 
-    let { showModal = $bindable(false), title = "Contactar" } = $props();
-    const phoneNumber = "+34649964007"; // Set your phone number
+	function closeContactModal() {
+		showModal = false;
+	}
 
-    function closeContactModal() {
-        showModal = false;
-    }
-    
-    export function callNumber() {
-        window.location.href = `tel:${phoneNumber}`;
-        closeContactModal();
-    }
-    
-    export function messageOnWhatsApp() {
-        window.location.href = `https://wa.me/${phoneNumber.replace(/\D/g, '')}`;
-        closeContactModal();
-    }
-    
-    // Close modal when clicking outside
-    function handleClickOutside(event: MouseEvent) {
-        if ((event.target as HTMLElement).id === "contactModal") {
-        closeContactModal();
-    }
-}
+	export function callNumber() {
+		window.location.href = `tel:${phoneNumber}`;
+		closeContactModal();
+	}
+
+	export function messageOnWhatsApp() {
+		window.location.href = `https://wa.me/${phoneNumber.replace(/\D/g, '')}`;
+		closeContactModal();
+	}
+
+	function handleClickOutside(event: MouseEvent) {
+		if ((event.target as HTMLElement).id === 'contactModal') {
+			closeContactModal();
+		}
+	}
 </script>
 
-<div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-990"  onclick={handleClickOutside}>
-    <div class="bg-white rounded-lg shadow-lg p-6 w-80 text-center relative">
-      <h2 class="text-lg font-semibold mb-4">{title}</h2>
-      <button onclick={callNumber} class="w-full bg-blue-500 text-white py-2 rounded-md mb-2">📞 Llamada</button>
-      <button onclick={messageOnWhatsApp} class="w-full bg-green-500 text-white py-2 rounded-md">💬 WhatsApp</button>
-      <button onclick={closeContactModal} class="absolute top-2 right-3 text-gray-500 text-lg">✖</button>
-    </div>
-</div>3
+<div
+	id="contactModal"
+	class="fixed inset-0 z-990 flex items-center justify-center bg-black/50 px-4"
+	onclick={handleClickOutside}
+	role="presentation"
+>
+	<div
+		class="relative w-full max-w-sm rounded-lg bg-white p-6 text-center shadow-lg"
+		role="dialog"
+		aria-modal="true"
+		aria-labelledby="contact-title"
+	>
+		<h2 id="contact-title" class="mb-4 text-lg font-semibold">{title}</h2>
+		<button type="button" onclick={callNumber} class="mb-2 w-full rounded-md bg-blue-600 py-2 text-white transition hover:bg-blue-700">
+			📞 Llamada
+		</button>
+		<button type="button" onclick={messageOnWhatsApp} class="w-full rounded-md bg-green-600 py-2 text-white transition hover:bg-green-700">
+			💬 WhatsApp
+		</button>
+		<button
+			type="button"
+			onclick={closeContactModal}
+			class="absolute right-3 top-2 text-lg text-gray-500 transition hover:text-gray-800"
+			aria-label="Cerrar contacto"
+		>
+			✖
+		</button>
+	</div>
+</div>

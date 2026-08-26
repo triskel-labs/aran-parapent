@@ -16,7 +16,7 @@
 <section id="faq-section" class="bg-neutral-200 w-full h-full flex flex-col justify-center items-center pt-16 lg:pt-26 pb-20 gap-8">
     <div class="w-full max-w-6xl flex flex-col px-4 gap-8">
         <h1 class="sifon text-center  text-3xl lg:text-4xl text-neutral-900 pt-8 lg:pt-0">
-            ¿QUE NECESITAS PARA VOLAR?
+            ¿QUÉ NECESITAS PARA VOLAR?
         </h1>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 py-6">
             {#each recomendations as { description, icon }}
