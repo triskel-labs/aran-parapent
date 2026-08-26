@@ -43,7 +43,7 @@
 	},
 	"dependencies": {
 		"@inlang/paraglide-sveltekit": "^0.15.5",
-		"@lottiefiles/lottie-player": "^2.0.12",
+		"@lottiefiles/dotlottie-wc": "^0.9.27",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@tailwindcss/container-queries": "^0.1.1",
@@ -51,11 +51,6 @@
 		"better-sqlite3": "^11.8.0",
 		"dotenv": "^16.4.7",
 		"drizzle-orm": "^0.38.4"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"esbuild",
-			"better-sqlite3"
-		]
 	}
 }
+
