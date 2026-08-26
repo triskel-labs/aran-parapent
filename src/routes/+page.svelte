@@ -5,24 +5,70 @@
 	import ServicesSection from '../components/sections/ServicesSection.svelte';
 	import SocialProof from '../components/sections/SocialProof.svelte';
 	import FAQSection from '../components/sections/FAQSection.svelte';
+	import { services } from '$lib/services';
 
 	let { data } = $props();
 
+	const siteUrl = 'https://aranparapent.com/';
+	const businessId = `${siteUrl}#business`;
 	const structuredData = JSON.stringify({
 		'@context': 'https://schema.org',
-		'@type': 'SportsActivityLocation',
-		name: 'Aran Parapent',
-		url: 'https://aranparapent.com/',
-		image: 'https://aranparapent.com/landscape-paraglide.webp',
-		telephone: '+34649964007',
-		email: 'aranparapent@gmail.com',
-		address: {
-			'@type': 'PostalAddress',
-			addressRegion: "Val d'Aran",
-			addressCountry: 'ES'
-		},
-		description:
-			"Vuelos biplaza en parapente en Val d'Aran, Ribagorza y rincones secretos del Pirineo."
+		'@graph': [
+			{
+				'@type': 'WebSite',
+				'@id': `${siteUrl}#website`,
+				url: siteUrl,
+				name: 'Aran Parapent',
+				inLanguage: 'es',
+				publisher: { '@id': businessId }
+			},
+			{
+				'@type': ['LocalBusiness', 'SportsActivityLocation'],
+				'@id': businessId,
+				name: 'Aran Parapent',
+				url: siteUrl,
+				image: `${siteUrl}landscape-paraglide.webp`,
+				telephone: '+34649964007',
+				email: 'aranparapent@gmail.com',
+				priceRange: '€€',
+				address: {
+					'@type': 'PostalAddress',
+					addressRegion: "Val d'Aran",
+					addressCountry: 'ES'
+				},
+				areaServed: ["Val d'Aran", 'Ribagorza', 'Pirineos', 'Luchon'],
+				description:
+					"Vuelos biplaza en parapente en Val d'Aran, Ribagorza y rincones secretos del Pirineo.",
+				sameAs: ['https://instagram.com/aranparapent']
+			},
+			{
+				'@type': 'ItemList',
+				'@id': `${siteUrl}#services`,
+				name: 'Vuelos biplaza en parapente',
+				itemListElement: services.map((service, index) => ({
+					'@type': 'ListItem',
+					position: index + 1,
+					item: { '@id': `${siteUrl}#${service.slug}` }
+				}))
+			},
+			...services.map((service) => ({
+				'@type': 'Product',
+				'@id': `${siteUrl}#${service.slug}`,
+				name: service.title,
+				description: `${service.description} Duración: ${service.duration}. Zona: ${service.area}.`,
+				image: `${siteUrl}${service.imageUrl}`,
+				brand: { '@id': businessId },
+				category: 'Vuelo biplaza en parapente',
+				offers: {
+					'@type': 'Offer',
+					price: service.price,
+					priceCurrency: 'EUR',
+					availability: 'https://schema.org/InStock',
+					url: `${siteUrl}#services-section`,
+					seller: { '@id': businessId }
+				}
+			}))
+		]
 	}).replace(/</g, '\\u003c');
 </script>
 

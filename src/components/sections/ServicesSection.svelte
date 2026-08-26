@@ -1,40 +1,6 @@
 <script>
 	import ServiceCard from '../ServiceCard.svelte';
-
-	const services = [
-		{
-			title: 'Vuelo Valle',
-			description:
-				"El vuelo perfecto para conocer la Val d'Aran. Combina 40 minutos de trekking con el parapente a la espalda y 15 minutos de vuelo. Despegando de un sitio poco accesible y privilegiado, con vistas al Parc Nacional d'Aigüestortes y al glaciar del Aneto.",
-			imageUrl: 'vuelo-valle.webp',
-			imagePosition: 'center 46%',
-			price: '200'
-		},
-		{
-			title: 'Vuelo térmico',
-			description:
-				"Disfruta de un vuelo más largo donde ganamos altura gracias a las corrientes térmicas. Vuelo de al menos 30 minutos, con posibilidad de alargar siempre que la meteorología lo permita. También se puede combinar con un trekking de 40'.",
-			imageUrl: 'vuelo-termico.webp',
-			imagePosition: 'center 34%',
-			price: '250'
-		},
-		{
-			title: 'Vuelo Luchon',
-			description:
-				'Si solo quieres volar y no quieres andar más de 5 minutos, este vuelo es para ti. Un despegue impresionante en la estación de Superbagnères de Luchon y 15 minutos de vuelo para disfrutar los Pirineos desde arriba.',
-			imageUrl: 'hike-fly.webp',
-			imagePosition: 'center center',
-			price: '160'
-		},
-		{
-			title: 'Vuelo con Buggie',
-			description:
-				'En este vuelo empezamos a tope de principio a fin. Sube en buggie hasta la antigua estación de La Tuca, haz una pequeña excursión de 20 minutos y sobrevuela Vielha con unas vistas únicas.',
-			imageUrl: 'vuelo-buggie.webp',
-			imagePosition: 'center 48%',
-			price: '230'
-		}
-	];
+	import { services } from '$lib/services';
 </script>
 
 <section

@@ -6,12 +6,12 @@
 
 <section id="hero-section" class="@container/wrapper overlay relative h-dvh w-full overflow-hidden bg-neutral-950">
 	<picture class="absolute inset-0 z-0 h-full w-full" aria-hidden="true">
-		<source media="(min-width: 1280px)" srcset="/landscape-paraglide.webp" />
+		<source media="(max-width: 1279px)" srcset="/portrait-paraglide-cloud.webp" />
 		<img
-			src="/portrait-paraglide-cloud.webp"
+			src="/landscape-paraglide.webp"
 			alt=""
-			width="1000"
-			height="1333"
+			width="1450"
+			height="936"
 			class="hero-image h-full w-full object-cover object-center"
 			fetchpriority="high"
 			loading="eager"

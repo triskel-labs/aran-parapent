@@ -1,11 +1,5 @@
 <script lang="ts">
-	interface Service {
-		title: string;
-		description: string;
-		imageUrl: string;
-		imagePosition?: string;
-		price: string;
-	}
+	import type { Service } from '$lib/services';
 
 	interface Props {
 		service: Service;
@@ -13,6 +7,12 @@
 
 	let { service }: Props = $props();
 	const imageSrc = $derived(service.imageUrl.startsWith('/') ? service.imageUrl : `/${service.imageUrl}`);
+	const baseImage = $derived(imageSrc.replace(/\.webp$/, ''));
+	const imageSrcset = $derived(
+		service.imageUrl === 'hike-fly.webp'
+			? `${baseImage}-480.webp 480w, ${baseImage}-700.webp 700w, ${imageSrc} 648w`
+			: `${baseImage}-480.webp 480w, ${baseImage}-700.webp 700w, ${imageSrc} 900w`
+	);
 </script>
 
 <article class="card flex h-full w-full max-w-[350px] flex-col gap-4 rounded-xl p-5 md:p-6">
@@ -21,9 +21,11 @@
 	<div class="image-container rounded-lg">
 		<img
 			src={imageSrc}
+			srcset={imageSrcset}
+			sizes="(max-width: 767px) min(350px, calc(100vw - 5rem)), (max-width: 1279px) 42vw, 320px"
 			alt={service.title}
 			width="700"
-			height="444"
+			height="1244"
 			loading="lazy"
 			decoding="async"
 			class="image"
@@ -60,6 +62,7 @@
 		width: 100%;
 		aspect-ratio: 4 / 2.6;
 		overflow: hidden;
+		background: linear-gradient(135deg, rgba(148, 163, 184, 0.25), rgba(241, 245, 249, 0.6));
 	}
 
 	.image {

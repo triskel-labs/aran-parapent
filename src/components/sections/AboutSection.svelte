@@ -7,7 +7,7 @@
             <p class="font-sans text-md lg:text-xl text-neutral-800 text-justify">Aran Parapent nace de la pasión de compartir un deporte, un estilo de vida. Ver lo que nos rodea desde otra perspectiva, desde rincones inesperados, es todo un regalo para enseñar desde las alturas. Pau es quien le da vida a este proyecto. Alegre, apasionado, cercano e ilusionado, vuela entre los valles más bonitos de los Pirineos.</p>
         </div>
         <div class="image-container flex flex-col justify-center items-center gap-1">
-                <img src="/pau.webp" alt="Pau" class="object-cover rounded-lg">
+                <img src="/pau.webp" alt="Pau" width="540" height="537" loading="lazy" decoding="async" class="object-cover rounded-lg">
                 <p class="text-sm text-neutral-500">Pau momentos antes del despegue</p>
             </div>
         </div>
