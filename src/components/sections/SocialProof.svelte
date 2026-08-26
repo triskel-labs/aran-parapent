@@ -65,9 +65,9 @@
 <section
 	bind:this={sectionEl}
 	id="social-section"
-	class="socialproof flex h-full w-full flex-col-reverse items-center justify-center gap-8 bg-neutral-200 px-4 py-16 md:flex-row md:py-28"
+	class="socialproof flex h-full w-full flex-col-reverse items-center justify-center gap-8 bg-neutral-200 px-4 py-14 sm:py-16 xl:flex-row xl:py-24"
 >
-	<div class="flex h-full w-full flex-col items-center justify-center gap-8 px-2 md:ml-16 md:gap-5">
+	<div class="flex h-full w-full flex-col items-center justify-center gap-8 px-2 xl:ml-16 xl:gap-5">
 		<div class="flex flex-col items-center justify-center gap-2">
 			<h1 class="sifon pt-8 text-center text-3xl text-neutral-900 lg:pt-0 lg:text-4xl">
 				TU SUEÑO Y EL NUESTRO <br />
@@ -138,11 +138,17 @@
 	}
 
 	.video-container {
-		max-width: 375px;
-		width: 100%;
-		height: min(525px, 82vh);
+		width: min(100%, 375px);
+		height: clamp(340px, 68vh, 525px);
 		overflow: hidden;
 		background: #111827;
+	}
+
+	@media (min-width: 1280px) {
+		.video-container {
+			width: min(32vw, 375px);
+			height: clamp(420px, 72vh, 525px);
+		}
 	}
 
 	video {
